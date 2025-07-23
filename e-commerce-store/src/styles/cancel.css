@@ -1,0 +1,31 @@
+.cancel-container {
+  text-align: center;
+  padding: 80px 20px;
+  font-family: sans-serif;
+}
+
+.cancel-title {
+  font-size: 36px;
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+.cancel-message {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.cancel-button {
+  padding: 12px 24px;
+  background-color: #e74c3c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #c0392b;
+}
