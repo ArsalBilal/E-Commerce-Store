@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-// import { toast } from "react-toastify";
-import { NotificationManager} from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 
 export default function RedirectWithToast() {
   const [showRedirect, setShowRedirect] = useState(false);
@@ -9,14 +8,14 @@ export default function RedirectWithToast() {
 
   useEffect(() => {
     NotificationManager.warning('Login first to check cart', 'Close after 3000ms', 3000);
-    console.log("Login first to check cart ")
+    console.log("Login first to check cart");
 
     const timer = setTimeout(() => {
       setShowRedirect(true);
-    },);
+    }, 3000);
 
     return () => clearTimeout(timer);
-  },[]);
+  }, []);
 
   if (showRedirect) {
     return <Navigate to="/login" replace state={{ from: location }} />;

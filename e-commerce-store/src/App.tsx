@@ -8,15 +8,17 @@ import Login from './components/modules/Login/Login';
 import Cart from './components/modules/cart/Cart';
 import AllCart from './components/modules/cart/AllCarts';
 import SessionManager from './components/base/SessionManager'; 
-import Success from './components/modules/cart/succes';
+import Success from './components/modules/cart/success';
 import PrivateRoute from './components/base/PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cancel from './components/modules/cart/cancel';
-import {NotificationContainer} from 'react-notifications';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { NotificationContainer } from 'react-notifications';
+import React, { FC, ReactNode } from 'react';
 
-
-const App = () => {
+const App: FC = () => {
   return (
     <Router>
       <SessionManager>
@@ -28,11 +30,10 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductsDetails />} />
           <Route path="/categories/:id" element={<ProductbyCat />} />
-          <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>}/>
+          <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
           <Route path="/allcarts" element={<AllCart />} />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />
-
         </Routes>
       </SessionManager>
     </Router>

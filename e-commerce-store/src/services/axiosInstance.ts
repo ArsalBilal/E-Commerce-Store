@@ -1,10 +1,9 @@
-import axios from "axios";
-import { refreshToken } from "./auth"; 
+import axios, { AxiosInstance } from "axios";
+import { refreshToken } from "./auth";
 
-export const axiosInstance = axios.create({
+export const axiosInstance: AxiosInstance = axios.create({
   baseURL: "https://dummyjson.com/",
   timeout: 10000,
-
   headers: {
     "Content-Type": "application/json",
   },
@@ -22,7 +21,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-                                                
+
     if (
       error.response &&
       error.response.status === 401 &&
@@ -31,7 +30,7 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const data = await refreshToken(localStorage.getItem("refreshToken"));
+        const data = await refreshToken(localStorage.getItem("refreshToken") || "");
         const newAccessToken = data.accessToken;
 
         localStorage.setItem("authToken", newAccessToken);
@@ -50,10 +49,8 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-
-
-export const stripeAxios = axios.create({
-  baseURL: "http://localhost:5000", 
+export const stripeAxios: AxiosInstance = axios.create({
+  baseURL: "http://localhost:5000",
   headers: {
     "Content-Type": "application/json",
   },

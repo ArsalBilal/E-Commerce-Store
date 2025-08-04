@@ -5,7 +5,7 @@ import { useCart } from "../../../services/cartContext";
 import { Link } from "react-router-dom";
 import { handleCheckout } from "../../../services/checkout";
 
-export default function Cart() {
+const Cart: React.FC = () => {
   const {
     cartItems,
     increaseQuantity,
@@ -14,7 +14,7 @@ export default function Cart() {
     cartCount,
   } = useCart();
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const delay = setTimeout(() => {
@@ -24,7 +24,7 @@ export default function Cart() {
   }, []);
 
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum: number, item) => sum + item.price * item.quantity,
     0
   );
 
@@ -180,4 +180,6 @@ export default function Cart() {
       </div>
     </div>
   );
-}
+};
+
+export default Cart;

@@ -1,2 +1,0 @@
-﻿# E-Commerce-Store
-# Practice in Java Script using dummy apis 

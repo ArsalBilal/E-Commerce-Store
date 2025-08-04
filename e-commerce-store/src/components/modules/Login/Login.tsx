@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import "../../../styles/login.css";
 import Navbar from "../../base/Navbar";
 import { authUser } from "../../../services/auth";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+const Login: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = (location.state as any)?.from?.pathname || "/";
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -21,7 +21,7 @@ export default function Login() {
     }
   }, [navigate]);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
@@ -30,8 +30,8 @@ export default function Login() {
       const data = await authUser(username, password);
       const expiresInMins = Date.now() + 30 * 60 * 1000;
 
-      localStorage.setItem("authToken", data.accessToken || data.token);
-      localStorage.setItem("refreshToken", data.refreshToken);
+      localStorage.setItem("authToken", (data as any).accessToken || (data as any).token);
+      localStorage.setItem("refreshToken", (data as any).refreshToken);
       localStorage.setItem("user", JSON.stringify(data));
       localStorage.setItem("sessionExpiry", expiresInMins.toString());
 
@@ -144,4 +144,6 @@ export default function Login() {
       </section>
     </div>
   );
-}
+};
+
+export default Login;

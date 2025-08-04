@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../base/Navbar";
-import "../../../styles/success.css"
+import "../../../styles/success.css";
 
-export default function Success() {
+const Success: React.FC = () => {
   return (
     <>
       <Navbar />
@@ -18,4 +18,6 @@ export default function Success() {
       </div>
     </>
   );
-}
+};
+
+export default Success;

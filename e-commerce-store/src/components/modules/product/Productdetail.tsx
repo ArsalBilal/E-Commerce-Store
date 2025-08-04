@@ -8,28 +8,32 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Product } from "../../../types";
 
-export default function ProductDetails() {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+const ProductDetails: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
   useEffect(() => {
     setLoading(true);
-    fetchProductById(id)
-      .then((data) => {
-        setProduct(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error loading product", err);
-        setLoading(false);
-      });
+    if (id) {
+      const productId = Number(id);
+      fetchProductById(productId)
+        .then((data) => {
+          setProduct(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error("Error loading product", err);
+          setLoading(false);
+        });
+    }
   }, [id]);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (): void => {
     try {
       if (product) {
         addToCart(product);
@@ -51,7 +55,7 @@ export default function ProductDetails() {
     }
   };
 
-  const handleGoBack = () => {
+  const handleGoBack = (): void => {
     navigate(-1);
   };
 
@@ -87,9 +91,9 @@ export default function ProductDetails() {
                 <Skeleton height={250} width={"100%"} />
               ) : (
                 <img
-                  src={product.thumbnail}
+                  src={product?.thumbnail}
                   className="img-fluid rounded-start"
-                  alt={product.title}
+                  alt={product?.title}
                   style={{
                     padding: "10px",
                     objectFit: "cover",
@@ -102,34 +106,34 @@ export default function ProductDetails() {
             <div className="col-md-8">
               <div className="card-body">
                 <h5 className="card-title">
-                  {loading ? <Skeleton width={200} /> : product.title}
+                  {loading ? <Skeleton width={200} /> : product?.title}
                 </h5>
                 <p className="card-text">
-                  {loading ? <Skeleton count={3} /> : product.description}
+                  {loading ? <Skeleton count={3} /> : product?.description}
                 </p>
                 <p className="card-text">
                   <strong>Price:</strong>{" "}
-                  {loading ? <Skeleton width={80} /> : `$${product.price}`}
+                  {loading ? <Skeleton width={80} /> : `$${product?.price}`}
                 </p>
                 <p className="card-text">
                   <strong>Category:</strong>{" "}
-                  {loading ? <Skeleton width={100} /> : product.category}
+                  {loading ? <Skeleton width={100} /> : product?.category}
                 </p>
                 <p className="card-text">
                   <strong>Brand:</strong>{" "}
-                  {loading ? <Skeleton width={100} /> : product.brand}
+                  {loading ? <Skeleton width={100} /> : product?.brand}
                 </p>
                 <p className="card-text">
                   <strong>Discount:</strong>{" "}
                   {loading ? (
                     <Skeleton width={60} />
                   ) : (
-                    `${product.discountPercentage}%`
+                    `${product?.discountPercentage}%`
                   )}
                 </p>
                 <p className="card-text">
                   <strong>Stock:</strong>{" "}
-                  {loading ? <Skeleton width={50} /> : product.stock}
+                  {loading ? <Skeleton width={50} /> : product?.stock}
                 </p>
                 <p className="card-text">
                   <small className="text-muted">Last updated just now</small>
@@ -150,4 +154,6 @@ export default function ProductDetails() {
       </div>
     </div>
   );
-}
+};
+
+export default ProductDetails;

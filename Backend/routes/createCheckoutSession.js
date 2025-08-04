@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
     }
 
     console.log(" Received items:", items);
-    console.log("Price in Dollars:",items.price*100);
+    console.log("Price in Dollars:",items.price);
 
     const line_items = items.map((item, index) => {
       const price = parseFloat(item.price);
@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
             description:description,  
             images: [image], 
           },
-          unit_amount: Math.round(price* 100), // Stripe expects amount in cents
+          unit_amount: Math.round(price * 100), // Convert dollars to cents for Stripe
         },
         quantity,
       };

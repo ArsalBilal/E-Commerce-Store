@@ -1,7 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
-export default function PrivateRoute({ children }) {
+interface PrivateRouteProps {
+  children: ReactNode;
+}
+
+export default function PrivateRoute({ children }: PrivateRouteProps) {
   const isLoggedIn = !!localStorage.getItem("authToken");
   const location = useLocation();
 
@@ -9,5 +13,5 @@ export default function PrivateRoute({ children }) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
+  return <>{children}</>;
 }

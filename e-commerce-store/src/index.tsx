@@ -7,12 +7,11 @@ import { CartProvider } from './services/cartContext';
 import 'rsuite/dist/rsuite.min.css';
 import 'react-notifications/lib/notifications.css';
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <CartProvider>
-    <App />
+      <App />
     </CartProvider>
   </React.StrictMode>
 );

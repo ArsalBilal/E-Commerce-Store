@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState, ReactNode } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { refreshToken } from "../../services/auth";
-const SessionManager = ({ children }) => {
+
+interface SessionManagerProps {
+  children: ReactNode;
+}
+
+export default function SessionManager({ children }: SessionManagerProps) {
   const [showWarning, setShowWarning] = useState(false);
-  const [refresh, setRefresh] = useState(null);
+  const [refresh] = useState<string | null>(localStorage.getItem("refreshToken"));
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    setRefresh(localStorage.getItem("refreshToken"));
-
     const checkSession = () => {
       const expiry = localStorage.getItem("sessionExpiry");
       const token = localStorage.getItem("authToken");
@@ -43,6 +46,9 @@ const SessionManager = ({ children }) => {
     }
 
     try {
+      if (refresh === null) {
+        throw new Error("No refresh token available");
+      }
       const data = await refreshToken(refresh);
       const newExpiry = Date.now() + 30 * 60 * 1000;
       localStorage.setItem("authToken", data.accessToken);
@@ -80,10 +86,10 @@ const SessionManager = ({ children }) => {
       )}
     </>
   );
-};
+}
 
 const overlayStyle = {
-  position: "fixed",
+  position: "fixed" as const,
   top: 0,
   left: 0,
   height: "100vh",
@@ -100,8 +106,6 @@ const modalStyle = {
   padding: "20px 30px",
   borderRadius: "10px",
   maxWidth: "400px",
-  textAlign: "center",
+  textAlign: "center" as const,
   boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
 };
-
-export default SessionManager;

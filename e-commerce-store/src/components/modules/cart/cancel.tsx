@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../base/Navbar";
-import "../../../styles/cancel.css"
+import "../../../styles/cancel.css";
 
-
-export default function Cancel() {
+const Cancel: React.FC = () => {
   return (
     <>
       <Navbar />
@@ -17,6 +16,8 @@ export default function Cancel() {
           Back to Home
         </Link>
       </div>
-    </> 
+    </>
   );
-}
+};
+
+export default Cancel;
