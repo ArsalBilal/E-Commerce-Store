@@ -17,8 +17,10 @@ interface StripeResponse {
 }
 
 export async function handleCheckout(cartItems: CheckoutItem[]): Promise<void> {
+  console.log("handleCheckout called with items:", cartItems);
   try {
     const stripe = await stripePromise;
+    console.log("Stripe initialized:", !!stripe);
 
     if (!stripe) {
       throw new Error('Stripe failed to initialize');
@@ -32,9 +34,13 @@ export async function handleCheckout(cartItems: CheckoutItem[]): Promise<void> {
       image: item.thumbnail,
     }));
 
+    console.log("Sending items to backend:", items);
+
     const response = await stripeAxios.post<StripeResponse>('/create-checkout-session', {
       items,
     });
+
+    console.log("Received session response:", response.data);
 
     const sessionId = response.data.id;
 
