@@ -7,3 +7,8 @@ export const axiosInstance = apiClient.instance;
 export const stripeClient = createApiClient({
   baseURL: "http://localhost:5000/api",
 });
+
+// Create and export stripe axios instance
+export const stripeAxios = createApiClient({
+  baseURL: "http://localhost:5000/api",
+}).instance;
