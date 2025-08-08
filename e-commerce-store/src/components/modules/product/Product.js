@@ -62,7 +62,7 @@ export default function Products() {
       <ToastContainer /> {/* 👈 Toast display container */}
 
       <h2 className="product-heading cursive-heading">
-        Products {location.search ? "(Search Results)" : ""}
+        Products {location.search ? `(${new URLSearchParams(location.search).get("search")})` : ""}
       </h2>
 
       {loading ? (

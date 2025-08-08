@@ -6,7 +6,10 @@ import { useCart } from "../../services/cartContext";
 
 export default function Navbar() {
   const [categories, setCategories] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("search") || "";
+  });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const {cartCount} = useCart();
@@ -24,7 +27,8 @@ export default function Navbar() {
     e.preventDefault();
     if (!query.trim()) return;
     navigate(`/products?search=${encodeURIComponent(query.trim())}`);
-    setQuery("");
+    // Do not clear the query here to keep the search text in the input field
+    // setQuery("");
   };
 
   const handleLogout = () => {
