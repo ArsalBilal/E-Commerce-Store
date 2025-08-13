@@ -325,6 +325,7 @@
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2; /* Standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: 2.625rem; /* 2 lines * 1.5 line-height */
@@ -584,4 +585,27 @@
   .products-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.truncate-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;  /* Limit to 3 lines */
+    line-clamp: 3;  /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    /* Standard approach fallback */
+    display: block;  /* Fallback for non-webkit */
+    max-height: 4.5em;  /* Approximately 3 lines (1.5em × 3) */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Optional: Add ellipsis for non-webkit browsers */
+.truncate-text::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white;  /* Match your background color */
 }
