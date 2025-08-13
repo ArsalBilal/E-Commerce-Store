@@ -13,6 +13,7 @@ import PrivateRoute from './components/base/PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cancel from './components/modules/cart/cancel';
+import HomePage from './components/layouts/HomePage';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { NotificationContainer } from 'react-notifications';
@@ -25,7 +26,7 @@ const App: FC = () => {
         <ToastContainer />
         <NotificationContainer />
         <Routes>
-          <Route path="/" element={<Products />} /> 
+          <Route path="/" element={<HomePage />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductsDetails />} />
