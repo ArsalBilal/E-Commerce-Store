@@ -48,7 +48,7 @@ const BestSellers: React.FC = () => {
         <h2 className="section-title">Best Sellers</h2>
         <div className="products-grid">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} badge="bestseller" />
+            <ProductCard key={product.id} product={product} badge="bestseller" section="bestseller" />
           ))}
         </div>
       </div>

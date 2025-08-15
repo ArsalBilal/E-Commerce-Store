@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../../types';
 import { useCart } from '../../../services/cartContext';
-import "../../../styles/homepage.css";
+import "../../../styles/EnhancedCardStyles.css";
 
 interface ProductCardProps {
   product: Product;
   badge?: 'new' | 'sale' | 'bestseller';
+  section?: 'featured' | 'bestseller' | 'newarrival' | 'specialoffer';
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, badge }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, badge, section = 'featured' }) => {
   const { addToCart } = useCart();
   const [isWishlisted, setIsWishlisted] = useState(false);
 
@@ -26,8 +27,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, badge }) => {
   const discount = product.discountPercentage || 0;
   const originalPrice = discount > 0 ? (product.price / (1 - discount / 100)).toFixed(2) : null;
 
+  const getSectionClass = () => {
+    switch (section) {
+      case 'featured':
+        return 'featured-product-card';
+      case 'bestseller':
+        return 'bestseller-product-card';
+      case 'newarrival':
+        return 'newarrival-product-card';
+      case 'specialoffer':
+        return 'specialoffer-product-card';
+      default:
+        return 'elegant-card';
+    }
+  };
+
   return (
-    <div className="product-card elegant-card">
+    <div className={`product-card ${getSectionClass()}`}>
       <Link to={`/product/${product.id}`} className="product-link">
         <div className="product-image-container">
           {badge && (

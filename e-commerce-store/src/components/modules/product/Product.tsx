@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Button from "../../base/Button";
-import Card from "../../base/Card";
 import { fetchProducts, searchProduct } from "../../../services/product";
 import Navbar from "../../base/Navbar";
 import { useCart } from "../../../services/cartContext";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import "../../../styles/ProductbyCat.css";
+import "../../../styles/ProductEnhancedStyles.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Product } from "../../../types";
@@ -67,21 +66,15 @@ const Products: React.FC = (): JSX.Element => {
       </h2>
 
       {loading ? (
-        <div className="product-grid">
+        <div className="skeleton-container">
           {Array.from({ length: 10 }).map((_, i) => (
-            <Card key={i}>
-              <h3 className="product-title">
-                <Skeleton width={150} />
-              </h3>
-              <Skeleton height={180} />
-              <p className="product-price">
-                <Skeleton width={100} />
-              </p>
-              <div className="card-buttons">
-                <Skeleton width={100} height={36} />
-                <Skeleton width={100} height={36} />
-              </div>
-            </Card>
+            <div key={i} className="skeleton-card">
+              <Skeleton className="skeleton-image" />
+              <Skeleton className="skeleton-title" width={200} />
+              <Skeleton className="skeleton-price" width={100} />
+              <Skeleton className="skeleton-button" width={120} />
+              <Skeleton className="skeleton-button" width={120} />
+            </div>
           ))}
         </div>
       ) : product.length === 0 ? (
@@ -89,23 +82,23 @@ const Products: React.FC = (): JSX.Element => {
       ) : (
         <div className="product-grid">
           {product.map((product) => (
-            <Card key={product.id}>
+            <div key={product.id} className="product-card">
               <h3 className="product-title">{product.title}</h3>
               <img
                 src={product.thumbnail}
                 alt={product.title}
                 className="product-image"
               />
-              <p className="product-price">Price: ${product.price}</p>
+              <p className="product-price">${product.price}</p>
               <div className="card-buttons">
                 <Link to={`/product/${product.id}`}>
-                  <Button>Show Details</Button>
+                  <button>Show Details</button>
                 </Link>
-                <Button onClick={() => handleAddToCart(product)}>
+                <button onClick={() => handleAddToCart(product)}>
                   Add to Cart
-                </Button>
+                </button>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       )}

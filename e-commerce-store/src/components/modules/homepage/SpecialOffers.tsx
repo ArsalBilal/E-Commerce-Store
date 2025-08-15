@@ -47,7 +47,7 @@ const SpecialOffers: React.FC = () => {
         <h2 className="section-title">Special Offers</h2>
         <div className="products-grid">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} badge="sale" section="specialoffer" />
           ))}
         </div>
       </div>

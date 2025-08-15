@@ -128,6 +128,351 @@
   --elegant-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
+/* Section-Specific Product Card Styles - Distinct Visual Designs */
+
+/* Featured Products - Elegant Horizontal Card Layout */
+.featured-product-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid #f0f0f0;
+}
+
+.featured-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-color: #ff6b35;
+}
+
+.featured-product-card .product-image-container {
+  width: 40%;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+
+.featured-product-card .product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-product-card .product-info {
+  width: 60%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-product-card .product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.featured-product-card .product-description {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.featured-product-card .product-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff6b35;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.featured-product-card .add-to-cart-btn {
+  background: #ff6b35;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+}
+
+.featured-product-card .add-to-cart-btn:hover {
+  background: #e55a2b;
+}
+
+/* Best Sellers - Compact Grid Card Layout */
+.bestseller-product-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bestseller-product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.bestseller-product-card .product-image-container {
+  margin: -15px -15px 15px -15px;
+  position: relative;
+}
+
+.bestseller-product-card .product-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.bestseller-product-card .product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bestseller-product-card .product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.bestseller-product-card .product-rating {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.bestseller-product-card .current-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.bestseller-product-card .add-to-cart-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.bestseller-product-card .add-to-cart-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* New Arrivals - Minimal Card Layout */
+.newarrival-product-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.newarrival-product-card:hover {
+  border-color: #00c851;
+  box-shadow: 0 4px 15px rgba(0, 200, 81, 0.1);
+}
+
+.newarrival-product-card .product-image-container {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.newarrival-product-card .product-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.newarrival-product-card .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newarrival-product-card .product-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.newarrival-product-card .product-description {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.newarrival-product-card .product-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #00c851;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+}
+
+.newarrival-product-card .add-to-cart-btn {
+  background: transparent;
+  color: #00c851;
+  border: 1px solid #00c851;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.newarrival-product-card .add-to-cart-btn:hover {
+  background: #00c851;
+  color: white;
+}
+
+/* Special Offers - Circular Card Layout */
+.specialoffer-product-card {
+  background: linear-gradient(135deg, #ff1744 0%, #ff5722 100%);
+  color: white;
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(255, 23, 68, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: center;
+}
+
+.specialoffer-product-card:hover {
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: 0 12px 35px rgba(255, 23, 68, 0.4);
+}
+
+.specialoffer-product-card .product-image-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.specialoffer-product-card .product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.specialoffer-product-card .product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.specialoffer-product-card .product-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.specialoffer-product-card .current-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.specialoffer-product-card .product-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffd700;
+  color: #ff1744;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.specialoffer-product-card .add-to-cart-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.specialoffer-product-card .add-to-cart-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Section Background Colors */
+.featured-products {
+  background: linear-gradient(135deg, #fff8e1, #ffe0b2);
+}
+
+.best-sellers {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+}
+
+.new-arrivals {
+  background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+}
+
+.special-offers {
+  background: linear-gradient(135deg, #ffebee, #ffcdd2);
+}
+
 /* Elegant Product Card */
 .elegant-card {
   background: rgba(255, 255, 255, 0.95);
@@ -548,6 +893,171 @@
   margin-top: 40px;
   padding-top: 20px;
   border-top: 1px solid #636e72;
+}
+
+/* Category Cards - 4 Distinct Visual Styles */
+.category-cards-section {
+    padding: 80px 0;
+    background: #fafafa;
+}
+
+.category-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.category-card {
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card 1: Warm Gradient */
+.card-warm {
+    background: linear-gradient(135deg, #ff6b35, #f7931e, #ff1744);
+    color: white;
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+}
+
+.card-warm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
+}
+
+/* Card 2: Cool Gradient */
+.card-cool {
+    background: linear-gradient(135deg, #2196f3, #00bcd4, #009688);
+    color: white;
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+}
+
+.card-cool:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 40px rgba(33, 150, 243, 0.5);
+}
+
+/* Card 3: Minimal White */
+.card-minimal {
+    background: white;
+    color: #2d3436;
+    border: 3px solid #00b894;
+    box-shadow: 0 2px 10px rgba(0, 184, 148, 0.1);
+}
+
+.card-minimal:hover {
+    border-color: #00a085;
+    box-shadow: 0 4px 20px rgba(0, 184, 148, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Card 4: Dark Theme */
+.card-dark {
+    background: #1a1a1a;
+    color: #f5f5f5;
+    box-shadow: 0 4px 20px rgba(26, 26, 26, 0.3);
+    position: relative;
+}
+
+.card-dark::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00ff88, #00bcd4, #ff1744);
+    transition: all 0.3s ease;
+}
+
+.card-dark:hover {
+    background: #2d2d2d;
+    transform: translateY(-5px);
+}
+
+.card-dark:hover::before {
+    height: 6px;
+    background: linear-gradient(90deg, #ff1744, #00bcd4, #00ff88);
+}
+
+/* Card Content Styling */
+.category-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.category-card p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.category-card .card-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    align-self: flex-start;
+}
+
+.card-minimal .card-btn {
+    background: #00b894;
+    color: white;
+    border: none;
+}
+
+.card-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.card-minimal .card-btn:hover {
+    background: #00a085;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 15px;
+    }
+    
+    .category-card {
+        padding: 2rem;
+        min-height: 180px;
+    }
+    
+    .category-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .category-card {
+        padding: 1.5rem;
+    }
 }
 
 /* Responsive Design */
