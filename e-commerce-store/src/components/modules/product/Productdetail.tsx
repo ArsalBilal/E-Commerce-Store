@@ -9,11 +9,13 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Product } from "../../../types";
+import "../../../styles/ProductDetailStyles.css";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [selectedImage, setSelectedImage] = useState<string>("");
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
@@ -24,6 +26,7 @@ const ProductDetails: React.FC = () => {
       fetchProductById(productId)
         .then((data) => {
           setProduct(data);
+          setSelectedImage(data.thumbnail);
           setLoading(false);
         })
         .catch((err) => {
@@ -59,94 +62,157 @@ const ProductDetails: React.FC = () => {
     navigate(-1);
   };
 
+  const getStockStatus = (stock?: number): { status: string; className: string } => {
+    if (!stock || stock === 0) return { status: "Out of Stock", className: "out-of-stock" };
+    if (stock < 10) return { status: `Only ${stock} left`, className: "low-stock" };
+    return { status: "In Stock", className: "in-stock" };
+  };
+
+  const renderStars = (rating?: number) => {
+    const safeRating = rating || 0;
+    return Array.from({ length: 5 }, (_, index) => (
+      <span key={index} className={`star ${index < Math.floor(safeRating) ? "filled" : ""}`}>
+        ★
+      </span>
+    ));
+  };
+
+  if (loading) {
+    return (
+      <div className="product-detail-container">
+        <Navbar />
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="product-detail-container">
+        <Navbar />
+        <div className="product-detail-wrapper">
+          <div className="text-center">
+            <h2>Product not found</h2>
+            <Button onClick={handleGoBack}>Go Back</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const stockStatus = getStockStatus(product.stock);
+  const discountAmount = product.discountPercentage 
+    ? Math.round(product.price * (product.discountPercentage / 100))
+    : 0;
+  const originalPrice = product.price + discountAmount;
+
   return (
-    <div>
+    <div className="product-detail-container">
       <Navbar />
       <ToastContainer />
-      <div className="container mt-4">
-        <div
-          className="card mb-3 shadow"
-          style={{ maxWidth: "1000px", margin: "auto", position: "relative" }}
-        >
-          <button
-            onClick={handleGoBack}
-            style={{
-              position: "absolute",
-              top: "10px",
-              left: "10px",
-              background: "none",
-              border: "none",
-              fontSize: "20px",
-              fontWeight: "bold",
-              color: "black",
-              cursor: "pointer",
-            }}
-          >
-            ← Back
-          </button>
+      
+      <button className="back-button" onClick={handleGoBack}>
+        ←
+      </button>
 
-          <div className="row g-0 pt-4">
-            <div className="col-md-4 d-flex align-items-center">
-              {loading ? (
-                <Skeleton height={250} width={"100%"} />
-              ) : (
+      <div className="product-detail-wrapper">
+        <div className="product-detail-card">
+          <div className="product-detail-grid">
+            {/* Image Section */}
+            <div className="product-image-section">
+              <div>
                 <img
-                  src={product?.thumbnail}
-                  className="img-fluid rounded-start"
-                  alt={product?.title}
-                  style={{
-                    padding: "10px",
-                    objectFit: "cover",
-                    maxHeight: "300px",
-                  }}
+                  src={selectedImage}
+                  alt={product.title}
+                  className="product-main-image"
                 />
-              )}
+                {product.images && product.images.length > 1 && (
+                  <div className="image-gallery">
+                    {product.images.slice(0, 4).map((image, index) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`${product.title} ${index + 1}`}
+                        className={`gallery-thumbnail ${selectedImage === image ? "active" : ""}`}
+                        onClick={() => setSelectedImage(image)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="col-md-8">
-              <div className="card-body">
-                <h5 className="card-title">
-                  {loading ? <Skeleton width={200} /> : product?.title}
-                </h5>
-                <p className="card-text">
-                  {loading ? <Skeleton count={3} /> : product?.description}
-                </p>
-                <p className="card-text">
-                  <strong>Price:</strong>{" "}
-                  {loading ? <Skeleton width={80} /> : `$${product?.price}`}
-                </p>
-                <p className="card-text">
-                  <strong>Category:</strong>{" "}
-                  {loading ? <Skeleton width={100} /> : product?.category}
-                </p>
-                <p className="card-text">
-                  <strong>Brand:</strong>{" "}
-                  {loading ? <Skeleton width={100} /> : product?.brand}
-                </p>
-                <p className="card-text">
-                  <strong>Discount:</strong>{" "}
-                  {loading ? (
-                    <Skeleton width={60} />
-                  ) : (
-                    `${product?.discountPercentage}%`
-                  )}
-                </p>
-                <p className="card-text">
-                  <strong>Stock:</strong>{" "}
-                  {loading ? <Skeleton width={50} /> : product?.stock}
-                </p>
-                <p className="card-text">
-                  <small className="text-muted">Last updated just now</small>
-                </p>
+            {/* Product Info Section */}
+            <div className="product-info-section">
+              <div className="product-header">
+                <h1 className="product-title">{product.title}</h1>
+                {product.brand && <p className="product-brand">by {product.brand}</p>}
+                <span className="product-category-badge">{product.category}</span>
+              </div>
 
-                {!loading && (
-                  <Button
-                    onClick={handleAddToCart}
-                    style={{ backgroundColor: "black", color: "#fff" }}
-                  >
-                    Add to Cart
-                  </Button>
+              <div className="product-rating">
+                <div className="rating-stars">
+                  {renderStars(product.rating)}
+                </div>
+                <span className="rating-text">
+                  {product.rating ? product.rating.toFixed(1) : "0.0"} out of 5 stars
+                </span>
+              </div>
+
+              <div className="price-section">
+                <span className="current-price">${product.price.toFixed(2)}</span>
+                {product.discountPercentage && product.discountPercentage > 0 && (
+                  <>
+                    <span className="original-price">${originalPrice.toFixed(2)}</span>
+                    <span className="discount-badge">
+                      {product.discountPercentage}% OFF
+                    </span>
+                  </>
                 )}
+              </div>
+
+              <p className="product-description">{product.description}</p>
+
+              <div className="product-specs">
+                <h3 className="specs-title">Product Details</h3>
+                <div className="specs-grid">
+                  {product.brand && (
+                    <div className="spec-item">
+                      <span className="spec-label">Brand</span>
+                      <span className="spec-value">{product.brand}</span>
+                    </div>
+                  )}
+                  <div className="spec-item">
+                    <span className="spec-label">Category</span>
+                    <span className="spec-value">{product.category}</span>
+                  </div>
+                  {product.stock && (
+                    <div className="spec-item">
+                      <span className="spec-label">Stock</span>
+                      <span className="spec-value">{product.stock} units</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="stock-status">
+                <div className={`stock-indicator ${stockStatus.className}`}></div>
+                <span className="stock-text">{stockStatus.status}</span>
+              </div>
+
+              <div className="action-buttons">
+                <button
+                  className="btn btn-primary"
+                  onClick={handleAddToCart}
+                  disabled={!product.stock || product.stock === 0}
+                >
+                  🛒 Add to Cart
+                </button>
+                <button className="btn btn-secondary">
+                  ♡ Add to Wishlist
+                </button>
               </div>
             </div>
           </div>
