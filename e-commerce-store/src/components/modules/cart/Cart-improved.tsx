@@ -5,7 +5,7 @@ import { useCart } from "../../../services/cartContext";
 import { Link } from "react-router-dom";
 import { handleCheckout } from "../../../services/checkout";
 
-const Cart: React.FC = () => {
+const CartImproved: React.FC = () => {
   const {
     cartItems,
     increaseQuantity,
@@ -291,4 +291,4 @@ const Cart: React.FC = () => {
   );
 };
 
-export default Cart;
+export default CartImproved;

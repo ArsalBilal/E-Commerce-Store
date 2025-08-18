@@ -328,7 +328,7 @@
 
 /* Section Background Colors */
 .featured-products {
-  background: linear-gradient(135deg, #fff8e1, #ffe0b2);
+  background: linear-gradient(135deg, #2f3bdf 0%, #ffe0b2);
 }
 
 .best-sellers {
