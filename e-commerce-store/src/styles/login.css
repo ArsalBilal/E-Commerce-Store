@@ -16,3 +16,6 @@ height: 100%;
 .login-container {
   background: linear-gradient(135deg, #0FA4AF 0%, #095258db 100%);
 }
+.login-button{
+  background: linear-gradient(45deg, #11151d, transparent);
+}

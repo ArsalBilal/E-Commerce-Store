@@ -108,7 +108,7 @@ const Login: React.FC = () => {
                 <div className="text-center text-lg-start mt-4 pt-2">
                   <button
                     type="submit"
-                    className="btn btn-primary btn-lg w-100"
+                    className="btn btn-primary btn-lg w-100 login-button"
                     disabled={loading}
                   >
                     {loading ? "Logging in..." : "Login"}
