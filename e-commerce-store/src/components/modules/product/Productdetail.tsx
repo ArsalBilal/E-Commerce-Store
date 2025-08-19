@@ -203,9 +203,9 @@ const ProductDetails: React.FC = () => {
                 <span className="stock-text">{stockStatus.status}</span>
               </div>
 
-              <div className="action-buttons">
+              <div className="action-buttons ">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary button-color"
                   onClick={handleAddToCart}
                   disabled={!product.stock || product.stock === 0}
                 >

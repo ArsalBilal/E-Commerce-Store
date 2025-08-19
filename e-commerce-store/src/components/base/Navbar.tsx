@@ -38,7 +38,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top navbar-custom">
       <div className="container-fluid">
-        <Link className="navbar-brand fw-bold text" to="/">
+        <Link className="navbar-brand fw-bold text text-color" to="/">
           🛍️ MyStore
         </Link>
 
@@ -58,7 +58,7 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown" style={{ position: "relative" }}>
               <button
-                className="btn nav-link dropdown-toggle text-dark fw-bold"
+                className="btn nav-link dropdown-toggle fw-bold text-color"
                 id="categoryDropdown"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"

@@ -64,6 +64,8 @@ export default function SessionManager({ children }: SessionManagerProps) {
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
+    setShowWarning(false);
+    alert("You have been logged out due to inactivity.");
   };
 
   return (
