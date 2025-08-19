@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../services/product";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useCart } from "../../services/cartContext";
+import "../../styles/Navbar.css"; 
 
 export default function Navbar() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -35,14 +36,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top ">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top navbar-custom">
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold text" to="/">
           🛍️ MyStore
         </Link>
 
         <button
-          className="navbar-toggler"
+          className="navbar-toggler "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarContent"
@@ -103,7 +104,18 @@ export default function Navbar() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button className="btn btn-outline-primary" type="submit">
+            <button 
+              className="btn" 
+              type="submit"
+              style={{
+                background: 'linear-gradient(135deg, #0FA4AF 0%, #095258db 100%)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                padding: '6px 12px',
+                cursor: 'pointer'
+              }}
+            >
               🔍
             </button>
           </form>
@@ -176,7 +188,18 @@ export default function Navbar() {
               </div>
             ) : (
               <Link to="/login">
-                <button className="btn btn-primary " style={{ marginTop: "7px" }}>
+                <button 
+                  className="btn" 
+                  style={{ 
+                    marginTop: "7px",
+                    background: 'linear-gradient(135deg, #0FA4AF 0%, #095258db 100%)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '6px 12px',
+                    cursor: 'pointer'
+                  }}
+                >
                   🔐 Login
                 </button>
               </Link>

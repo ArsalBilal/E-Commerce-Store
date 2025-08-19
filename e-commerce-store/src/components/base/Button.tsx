@@ -14,7 +14,7 @@ export default function Button({ children, onClick, style, type = "button", clas
       type={type}
       onClick={onClick}
       style={{
-        backgroundColor: '#4CAF50',
+        background: 'linear-gradient(135deg, #0FA4AF 0%, #095258db 100%)',
         color: 'white',
         padding: '6px 12px',
         border: 'none',

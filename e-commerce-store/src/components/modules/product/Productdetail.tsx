@@ -79,7 +79,7 @@ const ProductDetails: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="product-detail-container">
+      <div className="product-detail-container ">
         <Navbar />
         <div className="loading-container">
           <div className="loading-spinner"></div>
@@ -109,12 +109,13 @@ const ProductDetails: React.FC = () => {
   const originalPrice = product.price + discountAmount;
 
   return (
-    <div className="product-detail-container">
+    <div>
       <Navbar />
+      <div className="product-detail-container">
       <ToastContainer />
       
       <button className="back-button" onClick={handleGoBack}>
-        ←
+        ←Back
       </button>
 
       <div className="product-detail-wrapper">
@@ -218,6 +219,7 @@ const ProductDetails: React.FC = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -13,3 +13,6 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+.login-container {
+  background: linear-gradient(135deg, #0FA4AF 0%, #095258db 100%);
+}

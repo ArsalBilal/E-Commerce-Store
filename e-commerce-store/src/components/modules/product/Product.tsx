@@ -10,6 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Product } from "../../../types";
 import ProductCard from "../homepage/ProductCard";
+import "../../../styles/ProductEnhancedStyles.css";
 
 const Products: React.FC = (): JSX.Element => {
   const [product, setProduct] = useState<Product[]>([]);
@@ -37,11 +38,12 @@ const Products: React.FC = (): JSX.Element => {
   }, [location.search]);
 
   return (
-    <div className="product-category-page">
+    <div>
       <Navbar />
       <ToastContainer position="top-right" autoClose={2000} />
-
-      <h2 className="product-heading cursive-heading" style={{ textAlign: 'center' }}>
+      <div className="product-category-page">
+      
+      <h2 className="product-heading cursive-heading" >
         Products {location.search ? "(Search Results)" : ""}
       </h2>
 
@@ -65,6 +67,7 @@ const Products: React.FC = (): JSX.Element => {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 };
