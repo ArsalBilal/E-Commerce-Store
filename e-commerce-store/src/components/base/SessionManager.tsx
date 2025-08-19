@@ -57,7 +57,6 @@ export default function SessionManager({ children }: SessionManagerProps) {
       setShowWarning(false);
     } catch (err) {
       localStorage.clear();
-      navigate("/login");
     }
   };
 
