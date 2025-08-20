@@ -148,7 +148,7 @@ const ProductDetails: React.FC = () => {
             {/* Product Info Section */}
             <div className="product-info-section">
               <div className="product-header">
-                <h1 className="product-title">{product.title}</h1>
+                <h1 className="product-title text-white">{product.title}</h1>
                 {product.brand && <p className="product-brand">by {product.brand}</p>}
                 <span className="product-category-badge">{product.category}</span>
               </div>
@@ -174,7 +174,7 @@ const ProductDetails: React.FC = () => {
                 )}
               </div>
 
-              <p className="product-description">{product.description}</p>
+              <p className="product-description text-white">{product.description}</p>
 
               <div className="product-specs">
                 <h3 className="specs-title">Product Details</h3>
@@ -200,7 +200,7 @@ const ProductDetails: React.FC = () => {
 
               <div className="stock-status">
                 <div className={`stock-indicator ${stockStatus.className}`}></div>
-                <span className="stock-text">{stockStatus.status}</span>
+                <span className="stock-text text-white">{stockStatus.status}</span>
               </div>
 
               <div className="action-buttons ">
