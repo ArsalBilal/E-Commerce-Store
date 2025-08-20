@@ -60,13 +60,13 @@ const Login: React.FC = () => {
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form onSubmit={handleLogin}>
                 <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="username">
+                  <label className="form-label text-white" htmlFor="username">
                     Username
                   </label>
                   <input
                     type="text"
                     id="username"
-                    className="form-control form-control-lg"
+                    className="form-control form-control-lg "
                     placeholder="Enter username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -74,7 +74,7 @@ const Login: React.FC = () => {
                 </div>
 
                 <div className="form-outline mb-3">
-                  <label className="form-label" htmlFor="password">
+                  <label className="form-label text-white" htmlFor="password">
                     Password
                   </label>
                   <input
@@ -96,13 +96,13 @@ const Login: React.FC = () => {
                       type="checkbox"
                       id="rememberMe"
                     />
-                    <label className="form-check-label" htmlFor="rememberMe">
+                    <label className="form-check-label text-white" htmlFor="rememberMe">
                       Remember me
                     </label>
                   </div>
-                  <a href="#!" className="text-body">
+                  {/* <a href="#!" className="text-body text-white">
                     Forgot password?
-                  </a>
+                  </a> */}
                 </div>
 
                 <div className="text-center text-lg-start mt-4 pt-2">
@@ -113,9 +113,9 @@ const Login: React.FC = () => {
                   >
                     {loading ? "Logging in..." : "Login"}
                   </button>
-                  <p className="small fw-bold mt-3 mb-0 text-center">
+                  <p className="small fw-bold mt-3 mb-0 text-center text-white">
                     Don't have an account?{" "}
-                    <a href="#!" className="link-danger">
+                    <a href="#!" className="link-danger text-white">
                       Register
                     </a>
                   </p>

@@ -23,8 +23,8 @@ const NewsletterSignup: React.FC = () => {
       <div className="container">
         <div className="newsletter-content">
           <div className="newsletter-text">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to our newsletter and get exclusive deals, new arrivals, and more!</p>
+            <h2 className="text-white">Stay Updated</h2>
+            <p className="text-white">Subscribe to our newsletter and get exclusive deals, new arrivals, and more!</p>
           </div>
           <form onSubmit={handleSubmit} className="newsletter-form">
             {!subscribed ? (
