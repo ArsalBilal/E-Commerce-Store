@@ -10,7 +10,6 @@ const NewsletterSignup: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
     setTimeout(() => {
       setSubscribed(true);
       setLoading(false);

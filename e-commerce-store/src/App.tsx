@@ -14,8 +14,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cancel from './components/modules/cart/cancel';
 import HomePage from './components/layouts/HomePage';
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { NotificationContainer } from 'react-notifications';
 import React, { FC, ReactNode } from 'react';
 

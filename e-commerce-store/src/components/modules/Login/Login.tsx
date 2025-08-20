@@ -100,9 +100,6 @@ const Login: React.FC = () => {
                       Remember me
                     </label>
                   </div>
-                  {/* <a href="#!" className="text-body text-white">
-                    Forgot password?
-                  </a> */}
                 </div>
 
                 <div className="text-center text-lg-start mt-4 pt-2">

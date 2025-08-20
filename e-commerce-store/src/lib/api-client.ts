@@ -44,7 +44,6 @@ export class ApiClient {
   }
 
   private setupInterceptors() {
-    // Request interceptor
     this.instance.interceptors.request.use(
       (config) => {
         const token = this.getAuthToken();
@@ -56,7 +55,6 @@ export class ApiClient {
       (error) => Promise.reject(error)
     );
 
-    // Response interceptor
     this.instance.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -117,7 +115,6 @@ export class ApiClient {
     };
   }
 
-  // Generic HTTP methods
   async get<T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
     const response = await this.instance.get<T>(url, config);
     return this.formatResponse(response);
@@ -154,7 +151,6 @@ export class ApiClient {
     };
   }
 
-  // Utility methods
   setHeader(key: string, value: string): void {
     this.instance.defaults.headers.common[key] = value;
   }
@@ -168,17 +164,14 @@ export class ApiClient {
   }
 }
 
-  // Create default API client instance
 const config = getConfig();
 export const apiClient = new ApiClient({
   baseURL: config.api.baseURL,
   timeout: config.api.timeout,
 });
 
-  // Export the instance directly
 export const axiosInstance = apiClient.instance;
 
-// Export createApiClient function
 export const createApiClient = (customConfig: Partial<ApiClientConfig>) => {
   return new ApiClient({
     baseURL: customConfig.baseURL || config.api.baseURL,
