@@ -13,6 +13,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, badge, section = 'featured' }) => {
   const { addToCart } = useCart();
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -41,9 +42,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, badge, section = 'fe
         return 'elegant-card';
     }
   };
+  
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <div className={`product-card ${getSectionClass()}`}>
+    <div 
+      className={`product-card ${getSectionClass()} ${isHovered ? 'hovered' : ''}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <Link to={`/product/${product.id}`} className="product-link">
         <div className="product-image-container">
           {badge && (

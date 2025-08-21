@@ -10,6 +10,7 @@ const NewsletterSignup: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     
+    // Simulate API call
     setTimeout(() => {
       setSubscribed(true);
       setLoading(false);
@@ -22,27 +23,43 @@ const NewsletterSignup: React.FC = () => {
       <div className="container">
         <div className="newsletter-content">
           <div className="newsletter-text">
-            <h2 className="text-white">Stay Updated</h2>
-            <p className="text-white">Subscribe to our newsletter and get exclusive deals, new arrivals, and more!</p>
+            <div className="newsletter-icon">
+              <i className="far fa-envelope"></i>
+            </div>
+            <h2 className="newsletter-title">Stay Updated</h2>
+            <p className="newsletter-subtitle">Subscribe to our newsletter and get exclusive deals, new arrivals, and special offers delivered directly to your inbox!</p>
           </div>
           <form onSubmit={handleSubmit} className="newsletter-form">
             {!subscribed ? (
               <div className="form-group">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="newsletter-input"
-                />
-                <button type="submit" disabled={loading} className="newsletter-btn">
-                  {loading ? 'Subscribing...' : 'Subscribe'}
-                </button>
+                <div className="input-wrapper">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    required
+                    className="newsletter-input"
+                  />
+                  <button type="submit" disabled={loading} className="newsletter-btn">
+                    {loading ? (
+                      <span className="loading-spinner"></span>
+                    ) : (
+                      <>
+                        Subscribe <i className="fas fa-arrow-right"></i>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <p className="privacy-note">We respect your privacy. Unsubscribe at any time.</p>
               </div>
             ) : (
               <div className="success-message">
-                <p>Thank you for subscribing! 🎉</p>
+                <div className="success-icon">
+                  <i className="fas fa-check-circle"></i>
+                </div>
+                <h3>Thank you for subscribing!</h3>
+                <p>You're now part of our community. We'll keep you updated with the latest news and offers.</p>
               </div>
             )}
           </form>
