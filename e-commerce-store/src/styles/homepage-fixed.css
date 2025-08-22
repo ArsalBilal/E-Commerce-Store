@@ -1,0 +1,122 @@
+/* Homepage Styles - Fixed Text Color Readability & Consistency */
+@import url('./theme.css');
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Improved Color Scheme with Proper Contrast */
+:root {
+  /* Primary Color Scheme - Blue-based with proper contrast */
+  --primary-main: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --primary-light: #60a5fa;
+  
+  /* Secondary Color Scheme - Purple accent */
+  --secondary-main: #a855f7;
+  --secondary-dark: #7e22ce;
+  
+  /* Text Colors with WCAG compliance */
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-inverse: #ffffff;
+  
+  /* Background Colors */
+  --bg-white: #ffffff;
+  --bg-light: #f8fafc;
+  --bg-medium: #f1f5f9;
+  --bg-dark: #0f172a;
+  
+  /* Status Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+/* Hero Section - Fixed contrast and readability */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-main) 0%, var(--primary-dark) 100%);
+  padding: 100px 0;
+  color: var(--text-inverse);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-inverse);
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-inverse);
+  opacity: 0.9;
+}
+
+.cta-button {
+  background: var(--secondary-main);
+  color: var(--text-inverse);
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--secondary-dark);
+  transform: translateY(-2px);
+}
+
+/* Product Cards - Consistent styling */
+.product-card {
+  background: var(--bg-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.product-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-main);
+}
+
+/* Buttons - Consistent styling */
+.btn-primary {
+  background: var(--primary-main);
+  color: var(--text-inverse);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background: var(--secondary-main);
+  color: var(--text-inverse);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+}

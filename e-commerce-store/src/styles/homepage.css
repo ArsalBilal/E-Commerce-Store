@@ -6,6 +6,7 @@
   position: relative;
   overflow: hidden;
   height: 600px;
+  margin-top: 50px;
 }
 
 .carousel-container {
@@ -488,7 +489,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: white;
+  color: rgb(12, 12, 12);
 }
 
 .products-grid {
@@ -1595,7 +1596,7 @@
 
 /* Footer */
 .footer {
-  background: linear-gradient(135deg, #00b1be 0%, #000000db 100%);
+  background: linear-gradient(135deg, #454b4c 0%, #000000db 100%);
   color: white;
   padding: 60px 0 20px;
 }

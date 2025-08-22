@@ -50,7 +50,7 @@ export default function SessionManager({ children }: SessionManagerProps) {
         throw new Error("No refresh token available");
       }
       const data = await refreshToken(refresh);
-      const newExpiry = Date.now() + 30 * 60 * 1000;
+      const newExpiry = Date.now() + 10 * 60 * 1000;
       localStorage.setItem("authToken", data.accessToken);
       localStorage.setItem("sessionExpiry", newExpiry.toString());
       setShowWarning(false);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../styles/homepage.css';
+import '../../../styles/homepage-improved.css';
 
 interface Testimonial {
   id: number;

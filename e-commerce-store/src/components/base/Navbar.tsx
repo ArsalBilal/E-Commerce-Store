@@ -36,14 +36,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top navbar-custom">
+    <nav className="navbar navbar-expand-lg navbar-custom sticky-top">
       <div className="container-fluid">
-        <Link className="navbar-brand fw-bold text text-color" to="/">
+        <Link className="navbar-brand fw-bold" to="/">
           🛍️ MyStore
         </Link>
 
         <button
-          className="navbar-toggler "
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarContent"
@@ -56,9 +56,9 @@ export default function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown" style={{ position: "relative" }}>
+            <li className="nav-item dropdown">
               <button
-                className="btn nav-link dropdown-toggle fw-bold text-color"
+                className="btn nav-link dropdown-toggle fw-bold"
                 id="categoryDropdown"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -67,16 +67,8 @@ export default function Navbar() {
               </button>
 
               <ul
-                className="dropdown-menu"
+                className="dropdown-menu glass-effect"
                 aria-labelledby="categoryDropdown"
-                style={{
-                  position: "absolute",
-                  maxHeight: "500px",
-                  overflowY: "auto",
-                  top: "100%",
-                  left: 0,
-                  right: "auto",
-                }}
               >
                 {Array.isArray(categories) &&
                   categories.map((cat, i) =>
@@ -95,9 +87,9 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <form className="d-flex me-3" onSubmit={handleSearch}>
+          <form className="d-flex me-3 search-form" onSubmit={handleSearch}>
             <input
-              className="form-control me-2"
+              className="form-control search-input"
               type="search"
               placeholder="Search products..."
               aria-label="Search"
@@ -105,44 +97,21 @@ export default function Navbar() {
               onChange={(e) => setQuery(e.target.value)}
             />
             <button 
-              className="btn" 
+              className="btn search-button hover-lift" 
               type="submit"
-              style={{
-                background: 'linear-gradient(135deg, #0FA4AF 0%, #095258db 100%)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                padding: '6px 12px',
-                cursor: 'pointer'
-              }}
             >
               🔍
             </button>
           </form>
 
-          <div className="d-flex ">
-            <Link to="/cart" className="position-relative">
+          <div className="d-flex align-items-center">
+            <Link to="/cart" className="position-relative me-3">
               <button
-                className="btn btn-dark position-relative d-flex align-items-center justify-content-center"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  marginTop: "7px",
-                  marginRight: "9px",
-                  fontSize: "1.2rem",
-                }}
+                className="btn cart-button hover-lift"
               >
                 🛒
                 {cartCount > 0 && (
-                  <span
-                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                    style={{
-                      fontSize: "0.7rem",
-                      padding: "2px 6px",
-                      transform: "translate(-40%, -50%)",
-                    }}
-                  >
+                  <span className="cart-badge">
                     {cartCount}
                   </span>
                 )}
@@ -161,14 +130,12 @@ export default function Navbar() {
                   <img
                     src="https://static.vecteezy.com/system/resources/previews/035/624/082/non_2x/user-profile-person-icon-in-flat-isolated-in-suitable-for-social-media-man-profiles-screensavers-depicting-male-face-silhouettes-for-apps-website-vector.jpg"
                     alt="Profile"
-                    className="rounded-circle"
-                    width="40"
-                    height="40"
+                    className="profile-avatar hover-lift"
                   />
                 </button>
 
                 <ul
-                  className="dropdown-menu dropdown-menu-end shadow"
+                  className="dropdown-menu dropdown-menu-end profile-dropdown"
                   aria-labelledby="profileDropdown"
                 >
                   <li>
@@ -189,16 +156,7 @@ export default function Navbar() {
             ) : (
               <Link to="/login">
                 <button 
-                  className="btn" 
-                  style={{ 
-                    marginTop: "7px",
-                    background: 'linear-gradient(135deg, #0FA4AF 0%, #095258db 100%)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    padding: '6px 12px',
-                    cursor: 'pointer'
-                  }}
+                  className="btn auth-button hover-lift"
                 >
                   🔐 Login
                 </button>

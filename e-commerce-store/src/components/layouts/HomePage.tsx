@@ -2,13 +2,10 @@ import React from 'react';
 import Carousel from '../modules/homepage/Carousel';
 import HeroSection from '../modules/homepage/HeroSection';
 import FeaturedProducts from '../modules/homepage/FeaturedProducts';
-import BestSellers from '../modules/homepage/BestSellers';
 import BrandStory from '../modules/homepage/BrandStory';
 import Testimonials from '../modules/homepage/Testimonials';
 import Partners from '../modules/homepage/Partners';
 import CategoryShowcase from '../modules/homepage/CategoryShowcase';
-import NewArrivals from '../modules/homepage/NewArrivals';
-import SpecialOffers from '../modules/homepage/SpecialOffers';
 import NewsletterSignup from '../modules/homepage/NewsletterSignup';
 import Footer from '../base/Footer';
 import Navbar from '../base/Navbar';
@@ -21,12 +18,9 @@ const HomePage: React.FC = () => {
       <Carousel />
       <FeaturedProducts />
       <BrandStory />
-      <BestSellers />
       <Testimonials />
       <Partners />
       <CategoryShowcase />
-      <NewArrivals />
-      <SpecialOffers />
       <NewsletterSignup />
       <Footer />
     </div>

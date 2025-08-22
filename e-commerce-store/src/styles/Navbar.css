@@ -1,10 +1,353 @@
-/* Navbar Styles */
+/* Modern Navbar Styles - Complete UI Overhaul */
 
-.navbar-custom {
-  background: linear-gradient(135deg, #0FA4AF 0%, #095258db 100%) !important; /* Updated background */
+/* Elegant Color Scheme for Navbar - Improved Readability */
+:root {
+  --navbar-bg-primary: rgba(248, 249, 250, 0.98);
+  --navbar-bg-secondary: rgba(255, 255, 255, 0.95);
+  --navbar-glass-bg: rgba(255, 255, 255, 0.9);
+  --navbar-backdrop-blur: blur(10px);
+  --navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --navbar-border: 1px solid rgba(0, 0, 0, 0.05);
+  --text-primary: #2c3e50;
+  --text-secondary: #34495e;
+  --text-muted: #7f8c8d;
+  --text-accent: #3498db;
+  --accent-color: #3498db;
+  --accent-secondary: #2980b9;
+  --hover-color: rgba(52, 152, 219, 0.1);
+  --elegant-blue: linear-gradient(135deg, #3498db, #2980b9);
+  --elegant-blue-light: linear-gradient(135deg, #5dade2, #3498db);
+  --elegant-gray: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
 }
 
-/* Other existing styles... */
-.text-color{
+/* Base navbar styles */
+.navbar-custom {
+  background: linear-gradient(
+    135deg,
+    var(--navbar-bg-primary),
+    var(--navbar-bg-secondary)
+  );
+  backdrop-filter: var(--navbar-backdrop-blur);
+  -webkit-backdrop-filter: var(--navbar-backdrop-blur);
+  box-shadow: var(--navbar-shadow);
+  border-bottom: var(--navbar-border);
+  transition: all var(--transition-speed) ease;
+}
+
+/* Logo and brand styling */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary) !important;
+  transition: transform var(--transition-speed) ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation links */
+.navbar-nav .nav-link {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--text-primary) !important;
+  background: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  background: var(--navbar-glass-bg);
+  backdrop-filter: var(--navbar-backdrop-blur);
+  -webkit-backdrop-filter: var(--navbar-backdrop-blur);
+  border: var(--navbar-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--navbar-shadow);
+  margin-top: 0.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  color: var(--text-primary) !important;
+  padding: 0.75rem 1.5rem;
+  transition: all var(--transition-speed) ease;
+  border-radius: calc(var(--border-radius) / 2);
+}
+
+.dropdown-item:hover {
+  background: var(--hover-color);
+  transform: translateX(5px);
+}
+
+/* Search form enhancement */
+.search-form {
+  position: relative;
+  max-width: 400px;
+}
+
+.search-input {
+  background: var(--navbar-glass-bg);
+  border: var(--navbar-border);
+  border-radius: 50px;
+  color: var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  transition: all var(--transition-speed) ease;
+  backdrop-filter: var(--navbar-backdrop-blur);
+  -webkit-backdrop-filter: var(--navbar-backdrop-blur);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.search-button {
+  background: var(--elegant-blue);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  border-radius: 50%;
   color: white;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.search-button:hover {
+  transform: scale(1.1) translateY(-1px);
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.4);
+  background: var(--elegant-blue-light);
+}
+
+/* Cart button enhancement */
+.cart-button {
+  background: var(--elegant-gold);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  color: var(--text-primary);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+}
+
+.cart-button:hover {
+  background: linear-gradient(135deg, #c9a96e, #d4af37);
+  transform: scale(1.1) translateY(-1px);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--accent-color);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Login/Profile button */
+.auth-button {
+  background: var(--elegant-blue);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  border-radius: 25px;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.auth-button:hover {
+  background: var(--elegant-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.4);
+}
+
+/* Profile dropdown */
+.profile-dropdown {
+  background: var(--navbar-glass-bg);
+  backdrop-filter: var(--navbar-backdrop-blur);
+  -webkit-backdrop-filter: var(--navbar-backdrop-blur);
+  border: var(--navbar-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--navbar-shadow);
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--text-primary);
+  transition: all var(--transition-speed) ease;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.1);
+  border-color: var(--accent-color);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 991px) {
+  .navbar-custom {
+    padding: 1rem;
+  }
+
+  .navbar-collapse {
+    background: var(--navbar-glass-bg);
+    backdrop-filter: var(--navbar-backdrop-blur);
+    -webkit-backdrop-filter: var(--navbar-backdrop-blur);
+    border: var(--navbar-border);
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  .search-form {
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .cart-button,
+  .auth-button {
+    margin: 0.5rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .cart-button,
+  .auth-button {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Loading state */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Hover effects for interactive elements */
+.hover-lift {
+  transition: transform var(--transition-speed) ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Glass effect for dropdowns */
+.glass-effect {
+  background: var(--navbar-glass-bg);
+  backdrop-filter: var(--navbar-backdrop-blur);
+  -webkit-backdrop-filter: var(--navbar-backdrop-blur);
+  border: var(--navbar-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--navbar-shadow);
 }

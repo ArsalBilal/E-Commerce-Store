@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../../../services/product';
 import ProductCard from './ProductCard';
 import { Product } from '../../../types';
-import "../../../styles/homepage.css";
+import '../../../styles/homepage-improved.css';
 const FeaturedProducts: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ const FeaturedProducts: React.FC = () => {
     return (
       <section className="featured-products">
         <div className="container">
-          <h2 className="section-title">Featured Products</h2>
+          <h2 className="section-title text-black">Featured Products</h2>
           <div className="loading-state">
             <div className="spinner-border text-primary" role="status">
               <span className="visually-hidden">Loading...</span>

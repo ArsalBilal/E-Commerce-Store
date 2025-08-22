@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../../../styles/homepage.css";
+import '../../../styles/homepage-improved.css';
 
 const NewsletterSignup: React.FC = () => {
   const [email, setEmail] = useState('');

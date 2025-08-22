@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "../../../styles/homepage.css";
+import '../../../styles/homepage-improved.css';
 // Import individual icons as components
 import { FaShippingFast, FaUndo, FaHeadset } from 'react-icons/fa';
 
@@ -22,15 +22,21 @@ const HeroSection: React.FC = () => {
             </p>
             <div className="hero-features">
               <div className="hero-feature">
-                <div className="feature-icon">{React.createElement(FaShippingFast, { size: 20 })}</div>
+                <div className="feature-icon">
+                  {React.createElement(FaShippingFast as any, { size: 20 })}
+                </div>
                 <span>Fast Delivery</span>
               </div>
               <div className="hero-feature">
-                <div className="feature-icon">{React.createElement(FaUndo, { size: 20 })}</div>
+                <div className="feature-icon">
+                  {React.createElement(FaUndo as any, { size: 20 })}
+                </div>
                 <span>30-Day Returns</span>
               </div>
               <div className="hero-feature">
-                <div className="feature-icon">{React.createElement(FaHeadset, { size: 20 })}</div>
+                <div className="feature-icon">
+                  {React.createElement(FaHeadset as any, { size: 20 })}
+                </div>
                 <span>24/7 Support</span>
               </div>
             </div>

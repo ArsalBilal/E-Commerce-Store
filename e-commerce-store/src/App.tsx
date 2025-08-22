@@ -15,7 +15,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Cancel from './components/modules/cart/cancel';
 import HomePage from './components/layouts/HomePage';
 import { NotificationContainer } from 'react-notifications';
-import React, { FC, ReactNode } from 'react';
+import React, { FC} from 'react';
+import MyProducts from './components/modules/product/MyProducts';
 
 const App: FC = () => {
   return (
@@ -33,6 +34,7 @@ const App: FC = () => {
           <Route path="/allcarts" element={<AllCart />} />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />
+          <Route path="/my-products" element={<MyProducts/>} />
         </Routes>
       </SessionManager>
     </Router>
